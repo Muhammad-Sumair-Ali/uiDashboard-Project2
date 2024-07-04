@@ -7,21 +7,14 @@ import Layout from './components/panel/Layout';
 import AppRoutes from './components/AppRoutes';
 import { UserProvider } from './context/UserContext';
 import { Outlet } from 'react-router-dom';
-
+// import Layout from "./components/panel/Layout"
 
 export default function App() {
-  const [showDashboard, setShowDashboard] = useState(true);
-
-  const toggleDashboard = () => {
-    setShowDashboard(!showDashboard);
-  };
 
   return (
     <>
-    
       
       <UserProvider>
-  
         <AppRoutes/> 
       </UserProvider>
     

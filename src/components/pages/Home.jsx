@@ -11,11 +11,11 @@ import Layout from "../panel/Layout"
       <div className="p-10 m-5 bg-primary text-primary-foreground">
         <HeroLand />
 
+          {/* <Outlet /> */}
           
       </div>
-        <Layout>
-          <Outlet />
-        </Layout>
+       <Layout/>
+       
     </>
   )
   

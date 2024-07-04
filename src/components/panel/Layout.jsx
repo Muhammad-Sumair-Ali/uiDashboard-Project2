@@ -12,15 +12,17 @@ function classNames(...classes) {
 
 export default function Layout({ children }) {
   return (
+    
     <div className="min-h-full">
+      
       <Disclosure as="nav" className="bg-gray-100 text-black">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-10">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
               <div className="ml-10 flex items-baseline space-x-4 rounded-md">
                 {navigation.map((item) => (
+                 <i key={item.name}>
                   <NavLink
-                    key={item.name}
                     to={item.path}
                     className={({ isActive }) =>
                       classNames(
@@ -33,6 +35,7 @@ export default function Layout({ children }) {
                   >
                     {item.name}
                   </NavLink>
+                 </i>
                 ))}
               </div>
             </div>

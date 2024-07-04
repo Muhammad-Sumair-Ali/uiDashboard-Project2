@@ -40,63 +40,16 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import Layout from "../panel/Layout"
 
 const DashboardTwo = () => {
   return (
-    <div className="flex min-h-screen w-full flex-col p-10 bg-primary text-primary-foreground">
-      <header className=" flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
-       
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button
-              variant="outline"
-              size="icon"
-              className="shrink-0 md:hidden"
-            >
-              <Menu className="h-5 w-5" />
-              <span className="sr-only">Toggle navigation menu</span>
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="left">
-            <nav className="grid gap-6 text-lg font-medium">
-              <a
-                href="#"
-                className="flex items-center gap-2 text-lg font-semibold"
-              >
-                <Package2 className="h-6 w-6" />
-                <span className="sr-only">Acme Inc</span>
-              </a>
-              <a href="#" className="hover:text-foreground">
-                Dashboard
-              </a>
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Orders
-              </a>
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Products
-              </a>
-           
-            </nav>
-          </SheetContent>
-        </Sheet>
-        <Breadcrumb className="hidden md:flex">
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <a href="#">Main Dashboard Details</a>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </header>
-      <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8 pt-0 p-0 m-0">
-        <div className="flex items-center gap-4">
+    <Layout>
+
+      
+    <div className="flex min-h-screen w-full flex-col p-10 bg-primary text-primary-foreground p-0 mt-0 m-0">
+      <main className="flex flex-1 flex-col gap-2  md:gap-8 md:p-8 pt-0 p-0 m-0">
+        <div className="flex items-center gap-2">
           <Button variant="outline" size="icon" className="h-7 w-7">
             <ChevronLeft className="h-4 w-4" />
             <span className="sr-only">Back</span>
@@ -393,6 +346,7 @@ const DashboardTwo = () => {
         </div>
       </main>
     </div>
+      </Layout>
   )
 }
 export default DashboardTwo;

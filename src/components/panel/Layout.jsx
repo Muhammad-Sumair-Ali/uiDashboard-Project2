@@ -1,5 +1,5 @@
 import { Disclosure } from "@headlessui/react";
-import { NavLink } from "react-router-dom";
+import { NavLink , Outlet } from "react-router-dom";
 
 const navigation = [
   { name: "Dashboard", path: "/dashboard", current: false },
@@ -10,10 +10,10 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Layout({ children }) {
+export default function Layout() {
   return (
     
-    <div className="min-h-full">
+  <div className="min-h-full">
       
       <Disclosure as="nav" className="bg-gray-100 text-black">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-10">
@@ -45,7 +45,7 @@ export default function Layout({ children }) {
 
       <header className="bg-white shadow">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          {children}
+          <Outlet />
         </div>
       </header>
       <main>
@@ -54,5 +54,8 @@ export default function Layout({ children }) {
         </div>
       </main>
     </div>
+   
+
+    
   );
 }

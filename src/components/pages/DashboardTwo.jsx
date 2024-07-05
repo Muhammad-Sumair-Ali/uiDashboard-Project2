@@ -43,10 +43,7 @@ import {
 import Layout from "../panel/Layout"
 
 const DashboardTwo = () => {
-  return (
-    <Layout>
-
-      
+  return (   
     <div className="flex min-h-screen w-full flex-col p-10 bg-primary text-primary-foreground p-0 mt-0 m-0">
       <main className="flex flex-1 flex-col gap-2  md:gap-8 md:p-8 pt-0 p-0 m-0">
         <div className="flex items-center gap-2">
@@ -346,7 +343,6 @@ const DashboardTwo = () => {
         </div>
       </main>
     </div>
-      </Layout>
   )
 }
 export default DashboardTwo;

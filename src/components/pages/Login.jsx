@@ -1,28 +1,15 @@
 import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
+import { useForm } from 'react-hook-form';
+import { useAuth } from '../../action/useAuth';
 
 const Login = () => {
   const { loginUser } = useUser();
-  const navigate = useNavigate();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { register, formState: { errors }, handleSubmit } = useForm();
+  const { handleLogin } = useAuth();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
 
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const foundUser = users.find(user => user.email === email && user.password === password);
-
-    if (foundUser) {
-      alert('Login successful!');
-      loginUser(foundUser); // Set user data using context
-      navigate('/dashboard');
-    } else {
-      message.error('Invalid email or password');
-    }
-  };
 
   return (
     <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
@@ -34,18 +21,18 @@ const Login = () => {
           inventore quaerat mollitia?
         </p>
 
-        <form onSubmit={handleLogin} className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
+        <form onSubmit={handleSubmit(handleLogin)} className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
           <p className="text-center text-lg font-medium">Sign in to your account</p>
 
           <div>
             <label htmlFor="email" className="sr-only">Email</label>
             <div className="relative">
               <input
-                type="email"
+                {...register("email", { required: "Email Address is required" })} 
+                aria-invalid={errors.email ? "true" : "false"} 
                 className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                placeholder="Enter email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                
               />
               <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                 <svg
@@ -70,11 +57,11 @@ const Login = () => {
             <label htmlFor="password" className="sr-only">Password</label>
             <div className="relative">
               <input
-                type="password"
+                {...register("password", { required: true })} 
+                aria-invalid={errors.password ? "true" : "false"} 
                 className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                placeholder="Enter password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your password"
+               
               />
               <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                 <svg
@@ -105,7 +92,7 @@ const Login = () => {
             type="submit"
             className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
           >
-            Sign in
+           Login 
           </button>
 
           <p className="text-center text-sm text-gray-500">

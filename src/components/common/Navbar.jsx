@@ -13,10 +13,20 @@ import {
 import { Input } from "@/components/ui/input"
 import {
   CircleUser,
+  LucideLogIn,
   Search,
   Users,
 } from "lucide-react"
+import { useUser } from '../../context/UserContext';
+import { Link, NavLink } from 'react-router-dom';
+import { useAuth } from '../../action/useAuth';
+
+
+
+
 const Navbar = () => {
+  const { user ,logoutUser} = useUser()
+  // const { logoutUser } = useAuth()
   const navigation = [
     { name: 'Product', href: '#' },
     { name: 'Features', href: '#' },
@@ -79,14 +89,51 @@ const Navbar = () => {
                   <DropdownMenuContent align="end">
                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem>Settings</DropdownMenuItem>
-                    <DropdownMenuItem>Support</DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <div style={{backgroundColor:"#f1f1f1",borderRadius:"8px",padding:"10px",boxSizing:"border-box"}} className="userProfile h-10 flex items-center space-x-4 p-4 mt-5 rounded">
+                        {user ? (
+                          <div className="flex items-center space-x-3">
+                           
+                            <img
+                              id="username"
+                              className="h-10 w-10 rounded-full"
+                              src={`https://ui-avatars.com/api/?name=${user.fullName}`}
+                              alt="User Avatar"
+                            />
+                            <label className="text-sm font-medium" htmlFor="username">
+                              {user?.fullName}
+                            </label>
+                          </div>
+                        ) : (
+                          <p className="flex items-center space-x-3">
+                            <span>Please log in to view your profile.</span>
+                            <Link to="/login">
+                              <Button className="btn btn-primary" variant="primary">
+                                Login
+                              </Button>
+                            </Link>
+                          </p>
+                        )}
+                      </div>
+                    </DropdownMenuItem>
+                   
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem>Logout</DropdownMenuItem>
+                    <DropdownMenuItem>{
+                    user ? ( <div
+                             
+                             className="text-red-500 inline-block cursor-pointer"
+                             data-toggle="tooltip"
+                             data-placement="top"
+                             title="LOG OUT"
+                             onClick={logoutUser}
+                           >
+                             <LucideLogIn style={{display:"inline-block",marginRight:"5px"}} />Logout
+                           </div>) : "Must be logged in to view this page"
+                    }</DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
-          
+            
             </div>
           </nav>
           <Dialog className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -138,27 +185,54 @@ const Navbar = () => {
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                           <Button variant="secondary" size="icon" className="rounded-full">
-                            <CircleUser className="h-5 w-5" />
                             <span className="sr-only">Toggle user menu</span>
                           </Button>
+                          
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
                           <DropdownMenuLabel>My Account</DropdownMenuLabel>
                           <DropdownMenuSeparator />
                           <DropdownMenuItem>Settings</DropdownMenuItem>
-                          <DropdownMenuItem>Support</DropdownMenuItem>
                           <DropdownMenuSeparator />
                           <DropdownMenuItem>Logout</DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
+                      
                     </div>
-                    
-                    <a
-                      href="#"
-                      className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                    >
-                      Log in
-                    </a>
+                    <div style={{backgroundColor:"#f1f1f1",borderRadius:"8px",padding:"10px",boxSizing:"border-box"}} className="userProfile h-10 flex items-center space-x-4 p-4 mt-5 rounded">
+                      {user ? (
+                        <div className="flex items-center space-x-3">
+                          <div
+                            className="text-red-500 text-3xl cursor-pointer"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="LOG OUT"
+                            onClick={logoutUser}
+                          >
+                            <LucideLogIn />
+                          </div>
+                          <img
+                            id="username"
+                            className="h-10 w-10 rounded-full"
+                            src={`https://ui-avatars.com/api/?name=${user.fullName}`}
+                            alt="User Avatar"
+                          />
+                          <label className="text-sm font-medium" htmlFor="username">
+                            {user?.fullName}
+                          </label>
+                        </div>
+                      ) : (
+                        <p className="flex items-center space-x-3">
+                          <span>Please log in to view your profile.</span>
+                          <Link to="/login">
+                            <Button className="btn btn-primary" variant="primary">
+                              Login
+                            </Button>
+                          </Link>
+                        </p>
+                      )}
+                    </div>
+                    {user ? (<b>{user.fullName}</b>): <i>Login Required !!</i>}
                   </div>
                 </div>
               </div>

@@ -72,8 +72,6 @@ import Layout from "../panel/Layout"
 const Dashboard = () => {
   
   return (
-    <Layout>
-    
     <TooltipProvider> 
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
      
@@ -465,7 +463,6 @@ const Dashboard = () => {
       </div>
     </div>
       </TooltipProvider>
-      </Layout>
   )
 }
 export default Dashboard;

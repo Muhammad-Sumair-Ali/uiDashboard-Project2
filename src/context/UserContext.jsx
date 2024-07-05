@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const UserContext = createContext();
@@ -8,7 +9,7 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const userData = localStorage.getItem('user');
+    const userData = Cookies.get('users');
     if (userData) {
       setUser(JSON.parse(userData));
     }
@@ -16,12 +17,12 @@ export const UserProvider = ({ children }) => {
 
   const loginUser = (userData) => {
     setUser(userData);
-    localStorage.setItem('user', JSON.stringify(userData));
+    Cookies.set('users', JSON.stringify(userData));
   };
 
   const logoutUser = () => {
     setUser(null);
-    localStorage.removeItem('user');
+    Cookies.remove('users');
   };
 
   return (

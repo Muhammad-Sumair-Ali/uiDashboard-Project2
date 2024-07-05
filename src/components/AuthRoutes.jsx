@@ -1,18 +1,18 @@
 import { useEffect } from 'react'
-import { BrowserRouter , Routes,Route, Outlet, useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
+import { useAuth } from '../context/authContext'
 
-const AuthRoutes = ({token}) => {
+const AuthRoutes = () => {
+  const [ auth ] = useAuth()
   const navigate = useNavigate()
+  
   useEffect(() => {
-    if(!token){
+    if(!auth?.token){
        navigate('/login')
     }
-  },[token])
+  },[auth && auth.token])
   return(
    <>
-     <div>
-     <h2>Auth Page</h2>
-     </div>
      <Outlet/> 
    </>
   )

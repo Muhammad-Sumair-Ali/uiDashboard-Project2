@@ -9,14 +9,6 @@ import {
   Users,
 } from "lucide-react"
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import {
   Avatar,
   AvatarFallback,
   AvatarImage,
@@ -40,7 +32,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import Layout from "../panel/Layout"
 
 const DashboardTwo = () => {
   return (   

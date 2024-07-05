@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useUser } from '../../context/UserContext';
 import { useForm } from 'react-hook-form';
-import { useAuth } from '../../action/useAuth';
+import { _useAuth } from '../../action/_useAuth';
+import { useAuth } from '../../context/authContext';
 
 const Login = () => {
-  const { loginUser } = useUser();
   const { register, formState: { errors }, handleSubmit } = useForm();
-  const { handleLogin } = useAuth();
-
+  const { handleLogin } = _useAuth()
+   
+  
 
 
   return (
@@ -87,7 +87,9 @@ const Login = () => {
               </span>
             </div>
           </div>
-
+         
+          
+        
           <button
             type="submit"
             className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"

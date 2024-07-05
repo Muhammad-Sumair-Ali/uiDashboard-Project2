@@ -17,21 +17,23 @@ import {
   Search,
   Users,
 } from "lucide-react"
-import { useUser } from '../../context/UserContext';
 import { Link, NavLink } from 'react-router-dom';
-import { useAuth } from '../../action/useAuth';
+import { useAuth } from '../../context/authContext';
+import { _useAuth } from '../../action/_useAuth';
 
 
 
 
 const Navbar = () => {
-  const { user ,logoutUser} = useUser()
-  // const { logoutUser } = useAuth()
+  const [ auth ,setAuth] = useAuth()
+ const {handleLogout:logoutUser} = _useAuth()
+  const user = auth
+  
   const navigation = [
-    { name: 'Product', href: '#' },
-    { name: 'Features', href: '#' },
-    { name: 'Marketplace', href: '#' },
-    { name: 'Company', href: '#' },
+    { name: 'Product' },
+    { name: 'Features' },
+    { name: 'Marketplace'},
+    { name: 'Company' },
   ] 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -62,7 +64,7 @@ const Navbar = () => {
             </div>
             <div className="hidden lg:flex lg:gap-x-12">
               {navigation.map((item) => (
-                <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-900">
+                <a key={item.name} className="text-sm font-semibold leading-6 text-gray-900">
                   {item.name}
                 </a>
               ))}
@@ -91,7 +93,7 @@ const Navbar = () => {
                     <DropdownMenuSeparator />
                     <DropdownMenuItem>
                       <div style={{backgroundColor:"#f1f1f1",borderRadius:"8px",padding:"10px",boxSizing:"border-box"}} className="userProfile h-10 flex items-center space-x-4 p-4 mt-5 rounded">
-                        {user ? (
+                        { auth.token ? (
                           <div className="flex items-center space-x-3">
                            
                             <img
@@ -119,7 +121,7 @@ const Navbar = () => {
                    
                     <DropdownMenuSeparator />
                     <DropdownMenuItem>{
-                    user ? ( <div
+                    user.token ? ( <div
                              
                              className="text-red-500 inline-block cursor-pointer"
                              data-toggle="tooltip"

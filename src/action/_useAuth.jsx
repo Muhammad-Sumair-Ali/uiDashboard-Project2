@@ -16,15 +16,18 @@ export const _useAuth = () => {
       users.push(newUser);
       Cookies.set('users', JSON.stringify(users));
       toast.success('Successfully Created!');
-      // console.log(users);
+      console.log(users);
       navigate('/login');
      }
   }
   
   const handleLogin = (values) => {
     const users = JSON.parse(Cookies.get('users')) || [];
+    
     const { email, password } = values;
+    
     const foundUser = users.find(user => user.email === email && user.password === password);
+    
     if (foundUser) {
       setAuth(foundUser);
       const encryptedData = CryptoJS.AES.encrypt(
@@ -32,6 +35,7 @@ export const _useAuth = () => {
         import.meta.env.VITE_KEY
       ).toString();
        Cookies.set("authTicket", encryptedData, { expires: 2 });
+      
       toast.success('Login successful!');
       navigate('/dashboard');
     } else {

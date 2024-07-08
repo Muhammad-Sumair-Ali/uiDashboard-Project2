@@ -23,11 +23,12 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
 import DashboardCharts from './DashboardCharts'
+import DashChart from './DashChart'
 const DashboardTwo = () => {
   return (   
+    <>
     <div className="flex min-h-screen w-full flex-col p-10 bg-primary text-primary-foreground p-0 mt-0 m-0">
       <main className="flex flex-1 flex-col gap-2  md:gap-8 md:p-8 pt-0 p-0 m-0">
         <div className="flex items-center gap-2">
@@ -39,13 +40,13 @@ const DashboardTwo = () => {
            Main Dashboard
           </h1>
           <Badge variant="outline" className="ml-auto sm:ml-0">
-            In stock
+            stock
           </Badge>
           <div className="hidden items-center gap-2 md:ml-auto md:flex">
             <Button variant="outline" size="sm">
-              Discard
+            Save 
             </Button>
-            <Button size="sm">Save Product</Button>
+            <Button size="sm">Download</Button>
           </div>
         </div>
         <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
@@ -193,7 +194,11 @@ const DashboardTwo = () => {
           </Card>
         </div>
       </main>
+    
+    <DashChart/>
+      
     </div>
+      </>
   )
 }
 export default DashboardTwo;

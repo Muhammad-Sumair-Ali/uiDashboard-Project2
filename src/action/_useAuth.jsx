@@ -15,8 +15,8 @@ export const _useAuth = () => {
      }else{
       users.push(newUser);
       Cookies.set('users', JSON.stringify(users));
-      toast.success('Successfully Created!');
-      console.log(users);
+      toast.success('Successfully Created user!');
+      // console.log(users);
       navigate('/login');
      }
   }
@@ -43,6 +43,7 @@ export const _useAuth = () => {
     }
   };
   const handleLogout = () => {
+    Cookies.remove("authTicket");
     setAuth({
         email: "",
         fullName: "",
@@ -51,7 +52,7 @@ export const _useAuth = () => {
     toast.error("User logged out!");
     navigate("/login");
   };
-  return { 
+  return{ 
     handleSignup,
     handleLogout,
     handleLogin

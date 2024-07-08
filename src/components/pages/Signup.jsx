@@ -19,7 +19,7 @@ const Signup = () => {
   const RandomToken = Math.random() * 1273;
   
   return (
-    <Card className="mx-auto max-w-sm">
+    <Card className="mx-auto max-w-sm mt-5">
       <CardHeader>
         <CardTitle className="text-xl">Sign Up</CardTitle>
         <CardDescription>
@@ -51,7 +51,7 @@ const Signup = () => {
           <div className="grid gap-2">
             <Label htmlFor="password">Password</Label>
             <Input  {...register("password", { required: true })}
-                 aria-invalid={errors.password ? "true" : "false"} id="password" type="password" />
+                 aria-invalid={errors.password ? "true" : "false"} id="password" type="password" placeholder="Password" />
           </div>
             <Input
                  type="hidden"

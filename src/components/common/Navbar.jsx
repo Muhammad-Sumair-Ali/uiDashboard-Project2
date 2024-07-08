@@ -17,6 +17,8 @@ import {
   Search,
   Users,
 } from "lucide-react"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
 import { Link, NavLink } from 'react-router-dom';
 import { useAuth } from '../../context/authContext';
 import { _useAuth } from '../../action/_useAuth';
@@ -40,8 +42,8 @@ const Navbar = () => {
   return(
     <>
       <div>
-        <header className="absolute inset-x-0 top-0 z-50 ">
-          <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <header className="sticky top-0 absolute z-50 ">
+          <nav  className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
             <div className="flex lg:flex-1">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">shadcn/ui</span>
@@ -49,7 +51,9 @@ const Navbar = () => {
                   className="h-5 w-auto inline-block mx-2"
                   src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAh1BMVEX///8AAADj4+Pl5eXf39/o6Ojc3NxJSUlDQ0NGRkbU1NTX19dAQEDv7+9RUVHd3d0zMzM4ODjOzs47Ozv4+PhfX19OTk5aWlpUVFQuLi7y8vJiYmJpaWlsbGzCwsIiIiKsrKygoKC2trZ/f3++vr6dnZ0TExOKiooZGRkgICALCwspKSmSkpKWZ1X9AAAEyUlEQVR4nO3diXLiMAwG4JgrARLKkXJDKbSl1/s/3wa6O0tLrOkMshX/0f8CsqqPlCOOoyjsZPtNOhzNHzu59ErcZLmLzVceDk3pxbhIvjb/M+hJL4c/zbm5zMNYekHcaa7M96Rgr8V8bn5mJ70m1jSvGzRxW3pVjLkien4lbqWXxZcSolhMy4ie8ii9MK6UEkXq0EIUR6mNqDEfGP/zGzaixswz6cVxJB9YG8R4GTaIBgfSi+MIQdQkfenVMYQiukC4zFBEFy3p1TGEIpoiTLDeRBvSq2NI416Jhh0lGnqUaOjBJzpFJ0o1iE40QZigEg09SjT0KNHQU2uiQwSirToTHSI02KJegwh3BrVm6ERje4MYRKkGlWgAUaKhhyLaRZjgUokGHiUaepRo6CGJItyEX2+iCBOsN1GEu+/vlGjguUMnSl1FY4QJLrvoRIkGRwhEqasoPNERQoMddKIdJRp48IlaN2cp0TCiREOPEg09+EQTdKJUg0o0gNSa6ASd6BRhghk1QYQGlWjoUaKhB59oCk60TzWI8ECZPrHFdYrwNBKSKEKDSjT0KNHQo0RDD0U0VaIBhCKaIjRYa6IDhAmKE82eds97h4WEieZPf+/yeHl29PVBn9ji6oFo+/i/3NTJs6GFiS43lwVfHLQoTPTnD8z8z9qXJrr5WXS95K2QTSpE9Cu8Q+xTDfon+jVEzgqVI3rKB2OFChIt8s5XQZqo7ZcDtgqVJMo5w2oSLbJgqtCTJUr8enfkqdAjiM47PDWItNfW6q88P/20iQkm7hvM7A2aA8v5QRTRRJSombF8gKouUTO8Y6lQXaI82/grTHTK8vetMlGW8vhER0SDzJ89S0J9Y8JElNji6oFo0/1VlJqgEr05JFGWCdaaaBedaFeJ3hyK6Aid6Aid6IDl2KcKEx2yNKhE3Yb6Us890ZnwVVSJ/ib1Jsryn5aM9ZRc44Wo+wYzqkGWb357Q6JBJXpzPBAlJhijE40hiBIPCpi5P+RUmKj7BmtNdK5Ef1VBiTpNRryR4iE6ri7RCTpRng2o4woTZTn2SZgodda4Ev1VlKjbkERZGqw3UZZ7qch4IErdS6VEb04bnSj1cRSDKHG+IxPRhb3C1ANRqkHnRKeyRGfOid7LEk1ZGmxQE3R/iitFNOUhSr0G4Ym6n6AHotQEhYmy7EtRom6jRG+OEnUbJXpzpIkS5Wcsh+eNidv9pImyNEgRHXggSpzI4p7oQPgqikCUOpmMhyj1iV6YaMJCtEH8H/RB1PlVND/aK0AQjVof9gkiXEWjyD5CCKJFrLfjrWSJJmzHAD/YJohwFT3nxdIgCNHINkMYokVK38/w/PpBxhPRIs/YRIv036CJFskPV0TdH9fuj2hZtbkHovb3UdxEz+l8+3i2dj9BimjXSfn+RcWj+4d1UES7rh4ptV2NXs37W3Jgf5DidSii9+4A5Z3tfr91fw2VIOo5IkR9hiSKcKZOg5ogQoPX7y4uGnS/AdVD9uBEo8j+IHMIolGUgRMt3leAE42iHTbRyNohCtHIphSGaJF2WYMxUINRVLJRMsYhesoTNNFTrp5njEX0lP73TRRgRM9pX2402sBN8JTm57/vvSaf7veGyaT5uJoMJ6u9r28s/gDnI2itu3Hs/QAAAABJRU5ErkJggg=="
                   alt="" 
-                />shadcn/ui
+                /><b className='text-[19px]'> 
+                shadcn/ui
+                </b>
               </a>
             </div>
             <div className="flex lg:hidden">
@@ -84,7 +88,11 @@ const Navbar = () => {
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="secondary" size="icon" className="rounded-full">
-                      <CircleUser className="h-5 w-5" />
+                      {auth.token ? <Avatar>
+                        <AvatarImage src="https://github.com/shadcn.png" />
+                        <AvatarFallback>CN</AvatarFallback>
+                      </Avatar> : <CircleUser className="h-8 w-8" />}
+
                       <span className="sr-only">Toggle user menu</span>
                     </Button>
                   </DropdownMenuTrigger>
@@ -96,12 +104,11 @@ const Navbar = () => {
                         { auth.token ? (
                           <div className="flex items-center space-x-3">
                            
-                            <img
-                              id="username"
-                              className="h-10 w-10 rounded-full"
-                              src={`https://ui-avatars.com/api/?name=${user.fullName}`}
-                              alt="User Avatar"
-                            />
+                            <Avatar>
+                              <AvatarImage src="https://github.com/shadcn.png" />
+                              <AvatarFallback>CN</AvatarFallback>
+                            </Avatar>
+
                             <label className="text-sm font-medium" htmlFor="username">
                               {user?.fullName}
                             </label>
@@ -213,12 +220,11 @@ const Navbar = () => {
                           >
                             <LucideLogIn />
                           </div>
-                          <img
-                            id="username"
-                            className="h-10 w-10 rounded-full"
-                            src={`https://ui-avatars.com/api/?name=${user.fullName}`}
-                            alt="User Avatar"
-                          />
+                          <Avatar>
+                            <AvatarImage src="https://github.com/shadcn.png" />
+                            <AvatarFallback>CN</AvatarFallback>
+                          </Avatar>
+
                           <label className="text-sm font-medium" htmlFor="username">
                             {user?.fullName}
                           </label>

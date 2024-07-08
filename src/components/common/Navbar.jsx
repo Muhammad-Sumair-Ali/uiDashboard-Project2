@@ -128,7 +128,7 @@ const Navbar = () => {
                    
                     <DropdownMenuSeparator />
                     <DropdownMenuItem>{
-                    user.token ? ( <div
+                    auth.token ? ( <div
                              
                              className="text-red-500 inline-block cursor-pointer"
                              data-toggle="tooltip"
@@ -209,7 +209,7 @@ const Navbar = () => {
                       
                     </div>
                     <div style={{backgroundColor:"#f1f1f1",borderRadius:"8px",padding:"10px",boxSizing:"border-box"}} className="userProfile h-10 flex items-center space-x-4 p-4 mt-5 rounded">
-                      {user ? (
+                      {auth.token ? (
                         <div className="flex items-center space-x-3">
                           <div
                             className="text-red-500 text-3xl cursor-pointer"

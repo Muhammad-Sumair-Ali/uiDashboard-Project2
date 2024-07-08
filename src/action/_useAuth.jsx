@@ -9,12 +9,12 @@ export const _useAuth = () => {
   
   const navigate = useNavigate();
   const handleSignup = (newUser) => {  
-    const users = JSON.parse(Cookies.get('users') || '[]');
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
      if(users.find(user => user.email === newUser.email)){
        toast.error("User is Already Exist")
      }else{
       users.push(newUser);
-      Cookies.set('users', JSON.stringify(users));
+      localStorage.setItem('users', JSON.stringify(users));
       toast.success('Successfully Created user!');
       // console.log(users);
       navigate('/login');
@@ -22,7 +22,7 @@ export const _useAuth = () => {
   }
   
   const handleLogin = (values) => {
-    const users = JSON.parse(Cookies.get('users')) || [];
+    const users = JSON.parse(localStorage.getItem('users')) || [];
     
     const { email, password } = values;
     

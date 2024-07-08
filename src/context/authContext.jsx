@@ -9,26 +9,28 @@ const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({
     email: "",
     fullName: "",
-    token:"",
+    token: "",
   });
 
   useEffect(() => {
     let mySec =
       Cookie.get("authTicket") || sessionStorage.getItem("authTicket");
     if (mySec) {
-      const decSec = CryptoJS.AES.decrypt(mySec, import.meta.env.VITE_KEY);
-
-      setAuth(JSON.parse(decSec.toString(CryptoJS.enc.Utf8)));
+      try {
+        const decSec = CryptoJS.AES.decrypt(mySec, import.meta.env.VITE_KEY);
+        const decryptedData = JSON.parse(decSec.toString(CryptoJS.enc.Utf8));
+        setAuth(decryptedData);
+      } catch (error) {
+        console.error("Error decrypting authentication ticket:", error);
+      }
     }
   }, []);
 
-
-
   return (
     <AuthContext.Provider value={[auth, setAuth]}>
-      {" "}
-      {children}{" "}
+      {children}
     </AuthContext.Provider>
   );
 };
+
 export default AuthProvider;
